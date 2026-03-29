@@ -10,12 +10,6 @@ Implementar e comparar os algoritmos:
 ## Estrutura do projeto
 - `src/`: código-fonte
 - `instancias-numericas/`: arquivos de entrada
-- `tests/`: testes
-
-## Como executar
-```bash
-python src/main.py selection instancias-numericas/num.1000.1.in
-python src/main.py insertion instancias-numericas/num.1000.1.in
 
 ## Resultado
 TABELA 1 - TEMPO DE PROCESSAMENTO POR REPETICAO
