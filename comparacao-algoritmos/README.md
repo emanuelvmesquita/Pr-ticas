@@ -5,7 +5,7 @@ Projeto acadêmico da disciplina **Estrutura de Dados e Análise de Algoritmos**
 ## Estrutura geral
 Contém um único projeto: comparacao-algoritmos/, com:
 
-- src/main.py — script principal em Python (169 linhas)
+- src/main.py — script principal em Python 
 - instancias-numericas/ — 12 arquivos de entrada com arrays de inteiros
 - README.md — documentação e resultados
 - .venv/ — ambiente virtual Python
@@ -155,16 +155,21 @@ TABELA 1 - TEMPO DE PROCESSAMENTO POR REPETICAO
 | num.100000.3.in      | 100000   | insertion    | 26/03/2026 22:33:39 | 26/03/2026 22:37:37 | 3          | 238.069870   |
 | num.100000.3.in      | 100000   | insertion    | 26/03/2026 22:37:37 | 26/03/2026 22:41:43 | 4          | 246.143933   |
 | num.100000.3.in      | 100000   | insertion    | 26/03/2026 22:41:43 | 26/03/2026 22:45:26 | 5          | 222.434082   |
-| num.100000.4.in      | 100000   | selection    | 26/03/2026 22:45:26 | 26/03/2026 22:49:59 | 1          | 272.961648   |
-| num.100000.4.in      | 100000   | selection    | 26/03/2026 22:49:59 | 26/03/2026 22:54:48 | 2          | 289.062303   |
-| num.100000.4.in      | 100000   | insertion    | 26/03/2026 23:19:22 | 26/03/2026 23:23:02 | 4          | 220.147311   |      
-| num.100000.4.in      | 100000   | insertion    | 26/03/2026 23:23:02 | 26/03/2026 23:26:43 | 5          | 220.903620   |      
-***
+num.100000.4.in      | 100000   | selection    | 29/03/2026 23:06:25 | 29/03/2026 23:10:55 | 1          | 270.594146   |
+| num.100000.4.in      | 100000   | selection    | 29/03/2026 23:10:55 | 29/03/2026 23:15:27 | 2          | 271.521445   |
+| num.100000.4.in      | 100000   | selection    | 29/03/2026 23:15:27 | 29/03/2026 23:20:19 | 3          | 292.237144   |
+| num.100000.4.in      | 100000   | selection    | 29/03/2026 23:20:20 | 29/03/2026 23:25:03 | 4          | 283.004377   |
+| num.100000.4.in      | 100000   | selection    | 29/03/2026 23:25:03 | 29/03/2026 23:29:42 | 5          | 279.266158   |
+| num.100000.4.in      | 100000   | insertion    | 29/03/2026 23:29:42 | 29/03/2026 23:33:41 | 1          | 239.045006   |
+| num.100000.4.in      | 100000   | insertion    | 29/03/2026 23:33:41 | 29/03/2026 23:37:39 | 2          | 237.904022   |
+| num.100000.4.in      | 100000   | insertion    | 29/03/2026 23:37:39 | 29/03/2026 23:41:47 | 3          | 248.480198   |
+| num.100000.4.in      | 100000   | insertion    | 29/03/2026 23:41:47 | 29/03/2026 23:45:51 | 4          | 243.771512   |
+| num.100000.4.in      | 100000   | insertion    | 29/03/2026 23:45:51 | 29/03/2026 23:49:51 | 5          | 240.001693   |
 
 ## Conclusão
 O Insertion Sort se mostrou mais rápido nas instâncias maiores, especialmente em 100.000 elementos.
 
-
+***
 # Como executar
 
 ## 1. Entrar na pasta do projeto
