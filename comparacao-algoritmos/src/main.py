@@ -64,7 +64,7 @@ def listar_arquivos_instancias(caminho_pasta):
 
     for nome in os.listdir(caminho_pasta):
         caminho_completo = os.path.join(caminho_pasta, nome)
-        if os.path.isfile(caminho_completo):
+        if os.path.isfile(caminho_completo) and nome.endswith(".in"):
             arquivos.append(caminho_completo)
 
     arquivos.sort()
@@ -99,25 +99,62 @@ def imprimir_cabecalho_tabela_1():
 
     return larguras
 
-def executar_comparison(repeticoes):
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    pasta_instancias = os.path.join(base_dir, "instancias-numericas")
-    algoritmos = ["selection", "insertion"]
+def selecionar_instancias(arquivos):
+    print("\nInstancias disponiveis:")
+    for i, caminho in enumerate(arquivos, 1):
+        print(f"  {i}. {os.path.basename(caminho)}")
 
-    arquivos = listar_arquivos_instancias(pasta_instancias)
+    while True:
+        entrada = input("\nDigite os numeros das instancias desejadas separados por espaco (ou 'all' para todas): ").strip()
+
+        if entrada.lower() == "all":
+            return arquivos
+
+        try:
+            indices = [int(x) for x in entrada.split()]
+            if all(1 <= idx <= len(arquivos) for idx in indices) and len(indices) > 0:
+                return [arquivos[idx - 1] for idx in indices]
+            print(f"Informe numeros entre 1 e {len(arquivos)}.")
+        except ValueError:
+            print("Entrada invalida. Digite numeros inteiros ou 'all'.")
+
+def selecionar_algoritmos():
+    algoritmos_disponiveis = ["selection", "insertion"]
+
+    print("\nAlgoritmos disponiveis:")
+    for i, alg in enumerate(algoritmos_disponiveis, 1):
+        print(f"  {i}. {alg}")
+
+    while True:
+        entrada = input("\nDigite os numeros dos algoritmos desejados separados por espaco (ou 'all' para todos): ").strip()
+
+        if entrada.lower() == "all":
+            return algoritmos_disponiveis
+
+        try:
+            indices = [int(x) for x in entrada.split()]
+            if all(1 <= idx <= len(algoritmos_disponiveis) for idx in indices) and len(indices) > 0:
+                return [algoritmos_disponiveis[idx - 1] for idx in indices]
+            print(f"Informe numeros entre 1 e {len(algoritmos_disponiveis)}.")
+        except ValueError:
+            print("Entrada invalida. Digite numeros inteiros ou 'all'.")
+
+def executar_comparison(repeticoes, arquivos_selecionados, algoritmos_selecionados):
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
     larguras_tabela_1 = imprimir_cabecalho_tabela_1()
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    caminho_saida = os.path.join(base_dir, f"resultados_{timestamp}.txt")
+    caminho_saida = os.path.join(base_dir, "tests", f"resultados_{timestamp}.txt")
 
     linhas_saida = []
 
-    for caminho_arquivo in arquivos:
+    for caminho_arquivo in arquivos_selecionados:
         valores = ler_instancia(caminho_arquivo)
         nome_arquivo = os.path.basename(caminho_arquivo)
         n = len(valores)
 
-        for algoritmo in algoritmos:
+        for algoritmo in algoritmos_selecionados:
             for repeticao in range(1, repeticoes + 1):
                 ordenado, inicio, fim, tempo_execucao = executar_algoritmo(
                     algoritmo, valores
@@ -175,6 +212,10 @@ def ler_repeticoes():
             print("Entrada invalida. Digite um numero inteiro.")
 
 def main():
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    pasta_instancias = os.path.join(base_dir, "instancias-numericas")
+    arquivos = listar_arquivos_instancias(pasta_instancias)
+
     while True:
         repeticoes = ler_repeticoes()
 
@@ -182,7 +223,10 @@ def main():
             print("Encerrando o programa.")
             break
 
-        executar_comparison(repeticoes)
+        arquivos_selecionados = selecionar_instancias(arquivos)
+        algoritmos_selecionados = selecionar_algoritmos()
+
+        executar_comparison(repeticoes, arquivos_selecionados, algoritmos_selecionados)
 
 if __name__ == "__main__":
     main()
