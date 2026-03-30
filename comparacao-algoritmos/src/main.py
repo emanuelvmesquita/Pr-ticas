@@ -99,13 +99,18 @@ def imprimir_cabecalho_tabela_1():
 
     return larguras
 
-def executar_benchmark(repeticoes):
+def executar_comparison(repeticoes):
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     pasta_instancias = os.path.join(base_dir, "instancias-numericas")
     algoritmos = ["selection", "insertion"]
 
     arquivos = listar_arquivos_instancias(pasta_instancias)
     larguras_tabela_1 = imprimir_cabecalho_tabela_1()
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    caminho_saida = os.path.join(base_dir, f"resultados_{timestamp}.txt")
+
+    linhas_saida = []
 
     for caminho_arquivo in arquivos:
         valores = ler_instancia(caminho_arquivo)
@@ -133,9 +138,23 @@ def executar_benchmark(repeticoes):
                     f"{tempo_execucao:.6f}",
                 ]
 
-                print(linha_tabela(linha_detalhada, larguras_tabela_1))
+                linha = linha_tabela(linha_detalhada, larguras_tabela_1)
+                print(linha)
+                linhas_saida.append(linha)
 
-    print(separador(larguras_tabela_1))
+    rodape = separador(larguras_tabela_1)
+    print(rodape)
+    linhas_saida.append(rodape)
+
+    with open(caminho_saida, "w", encoding="utf-8") as arquivo_saida:
+        arquivo_saida.write("TABELA 1 - TEMPO DE PROCESSAMENTO POR REPETICAO\n")
+        arquivo_saida.write(separador(larguras_tabela_1) + "\n")
+        arquivo_saida.write(linha_tabela(["Arquivo", "N", "Algoritmo", "Inicio", "Fim", "Repeticao", "Tempo (s)"], larguras_tabela_1) + "\n")
+        arquivo_saida.write(separador(larguras_tabela_1) + "\n")
+        for linha in linhas_saida:
+            arquivo_saida.write(linha + "\n")
+
+    print(f"\nResultados salvos em: {caminho_saida}")
 
 def ler_repeticoes():
     while True:
@@ -163,7 +182,7 @@ def main():
             print("Encerrando o programa.")
             break
 
-        executar_benchmark(repeticoes)
+        executar_comparison(repeticoes)
 
 if __name__ == "__main__":
     main()
