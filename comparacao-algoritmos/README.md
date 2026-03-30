@@ -1,6 +1,6 @@
 # Comparação de Algoritmos de Ordenação
-
-Projeto da disciplina de Estrutura de Dados e Análise de Algoritmos.
+Projeto acadêmico da disciplina **Estrutura de Dados e Análise de Algoritmos** (Mestrado). Implementa e compara empiricamente dois algoritmos de ordenação.
+***
 
 ## Estrutura geral
 Contém um único projeto: comparacao-algoritmos/, com:
@@ -11,8 +11,16 @@ Contém um único projeto: comparacao-algoritmos/, com:
 - .venv/ — ambiente virtual Python
 
 ## O que o projeto faz
-Implementa e compara o desempenho de dois algoritmos de ordenação:
+O main.py é um comparativo interativo com o seguinte fluxo:
 
+1. Pergunta quantas **repetições** executar
+2. Lista as **instâncias disponíveis** → usuário escolhe quais (ou all)
+3. Lista os **algoritmos disponíveis** → usuário escolhe qual(is) (ou all)
+3. Executa a combinação selecionada, medindo o tempo de cada execução com time.perf_counter()
+4. Exibe os resultados em tabela ASCII no terminal
+5. Salva os resultados automaticamente em resultados_YYYYMMDD_HHMMSS.txt
+
+O código implementa e compara o desempenho de dois algoritmos de ordenação:
 
 | Algoritmo	      | Complexidade |
 |-----------------|--------------|
@@ -25,10 +33,7 @@ Os testes usam instâncias de 1.000, 10.000 e 100.000 elementos (4 variações c
 Implementar e comparar os algoritmos:
 - Selection Sort
 - Insertion Sort
-
-## Estrutura do projeto
-- `src/`: código-fonte
-- `instancias-numericas/`: arquivos de entrada
+***
 
 ## Resultado
 TABELA 1 - TEMPO DE PROCESSAMENTO POR REPETICAO
@@ -154,6 +159,22 @@ TABELA 1 - TEMPO DE PROCESSAMENTO POR REPETICAO
 | num.100000.4.in      | 100000   | selection    | 26/03/2026 22:49:59 | 26/03/2026 22:54:48 | 2          | 289.062303   |
 | num.100000.4.in      | 100000   | insertion    | 26/03/2026 23:19:22 | 26/03/2026 23:23:02 | 4          | 220.147311   |      
 | num.100000.4.in      | 100000   | insertion    | 26/03/2026 23:23:02 | 26/03/2026 23:26:43 | 5          | 220.903620   |      
+***
 
 ## Conclusão
 O Insertion Sort se mostrou mais rápido nas instâncias maiores, especialmente em 100.000 elementos.
+
+
+# Como executar
+
+## 1. Entrar na pasta do projeto
+cd comparacao-algoritmos
+
+## 2. Ativar o ambiente virtual
+### Windows:
+.venv\Scripts\activate
+### Linux/macOS:
+source .venv/bin/activate
+
+## 3. Executar
+python src/main.py
