@@ -2,6 +2,27 @@
 
 Projeto da disciplina de Estrutura de Dados e Análise de Algoritmos.
 
+## Estrutura geral
+Contém um único projeto: comparacao-algoritmos/, com:
+
+- src/main.py — script principal em Python (169 linhas)
+- instancias-numericas/ — 12 arquivos de entrada com arrays de inteiros
+- README.md — documentação e resultados
+- .venv/ — ambiente virtual Python
+
+## O que o projeto faz
+Implementa e compara o desempenho de dois algoritmos de ordenação:
+
+|--------------|--------------|
+Algoritmo	Complexidade
+|--------------|--------------|
+Selection Sort	O(n²)
+|--------------|--------------|
+Insertion Sort	O(n²) médio
+|--------------|--------------|
+
+Os testes usam instâncias de 1.000, 10.000 e 100.000 elementos (4 variações cada).
+
 ## Objetivo
 Implementar e comparar os algoritmos:
 - Selection Sort
@@ -13,7 +34,7 @@ Implementar e comparar os algoritmos:
 
 ## Resultado
 TABELA 1 - TEMPO DE PROCESSAMENTO POR REPETICAO
-
+|----------------------|----------|--------------|---------------------|---------------------|------------|--------------|
 | Arquivo              | N        | Algoritmo    | Inicio              | Fim                 | Repeticao  | Tempo (s)    |
 |----------------------|----------|--------------|---------------------|---------------------|------------|--------------|
 | num.1000.1.in        | 1000     | selection    | 26/03/2026 23:41:50 | 26/03/2026 23:41:50 | 1          | 0.031336     |
@@ -136,3 +157,6 @@ TABELA 1 - TEMPO DE PROCESSAMENTO POR REPETICAO
 | num.100000.4.in      | 100000   | insertion    | 26/03/2026 23:19:22 | 26/03/2026 23:23:02 | 4          | 220.147311   |      
 | num.100000.4.in      | 100000   | insertion    | 26/03/2026 23:23:02 | 26/03/2026 23:26:43 | 5          | 220.903620   |      
 |----------------------|----------|--------------|---------------------|---------------------|------------|--------------|
+
+## Conclusão
+O Insertion Sort se mostrou mais rápido nas instâncias maiores, especialmente em 100.000 elementos.
