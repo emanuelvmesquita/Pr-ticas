@@ -18,7 +18,6 @@ Implementa e compara o desempenho de dois algoritmos de ordenação:
 |-----------------|--------------|
 | Selection Sort  |	O(n²)        |
 | Insertion Sort	| O(n²) médio  |
-|-----------------|--------------|
 
 Os testes usam instâncias de 1.000, 10.000 e 100.000 elementos (4 variações cada).
 
@@ -155,7 +154,6 @@ TABELA 1 - TEMPO DE PROCESSAMENTO POR REPETICAO
 | num.100000.4.in      | 100000   | selection    | 26/03/2026 22:49:59 | 26/03/2026 22:54:48 | 2          | 289.062303   |
 | num.100000.4.in      | 100000   | insertion    | 26/03/2026 23:19:22 | 26/03/2026 23:23:02 | 4          | 220.147311   |      
 | num.100000.4.in      | 100000   | insertion    | 26/03/2026 23:23:02 | 26/03/2026 23:26:43 | 5          | 220.903620   |      
-|----------------------|----------|--------------|---------------------|---------------------|------------|--------------|
 
 ## Conclusão
 O Insertion Sort se mostrou mais rápido nas instâncias maiores, especialmente em 100.000 elementos.
